@@ -1,9 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+/**
+ * CMPSC 221 Final Project
+ * SnakeFrame.java
+ * Purpose: Draw the frame the snake is in
+ *
+ * @author Tristan Napier
+ * @version 1.0 4/25/23
  */
+
 package snake;
 import javax.swing.JFrame;
+
 public class  SnakeFrame extends JFrame {
     SnakeFrame(){
         this.add(new SnakePanel());

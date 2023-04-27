@@ -1,11 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package snake;
 
 public class SnakeGame {
     
+    
+    //just starts the snake game, will be replaced by main GUI
     public static void main(String[] args) throws Exception {
       new SnakeFrame();
       
