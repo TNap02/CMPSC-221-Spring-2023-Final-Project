@@ -184,11 +184,14 @@ public class LoginFrame extends javax.swing.JFrame {
         
         new StartMenu().setVisible(true);
         
+        LoginInfo user = new LoginInfo(usernameTextBox.getText(), passwordTextBox.getText());
+        
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void createAccountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAccountButtonActionPerformed
        
         new StartMenu().setVisible(true);
+        LoginInfo user = new LoginInfo(usernameTextBox.getText(), passwordTextBox.getText());
     }//GEN-LAST:event_createAccountButtonActionPerformed
 
     
