@@ -9,6 +9,7 @@
 package SnakeGameGUIs;
 
 import java.awt.Color;
+import snake.SnakeFrame;
 
 
 public class StartMenu extends java.awt.Frame {
@@ -177,7 +178,7 @@ public class StartMenu extends java.awt.Frame {
 
 //Pulls up the game when the user clicks play
     private void PlayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlayButtonActionPerformed
-       
+       new SnakeFrame().setVisible(true);
     }//GEN-LAST:event_PlayButtonActionPerformed
 
     private void SettingButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SettingButtonMouseEntered

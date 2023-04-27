@@ -12,11 +12,11 @@ package SnakeGameGUIs;
 public class LoginInfo {
     
     private String userName;
-    private String passWord;
+    private String password;
 
     public LoginInfo(String userName, String passWord) {
         this.userName = userName;
-        this.passWord = passWord;
+        this.password = passWord;
     }
 
     public String getUserName() {
@@ -24,6 +24,6 @@ public class LoginInfo {
     }
 
     public String getPassWord() {
-        return passWord;
+        return password;
     }
 }
