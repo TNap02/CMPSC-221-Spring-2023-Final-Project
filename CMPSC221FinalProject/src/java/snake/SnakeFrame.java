@@ -11,7 +11,7 @@ package snake;
 import javax.swing.JFrame;
 
 public class  SnakeFrame extends JFrame {
-    SnakeFrame(){
+    public SnakeFrame(){
         this.add(new SnakePanel());
         this.setTitle("Snake");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

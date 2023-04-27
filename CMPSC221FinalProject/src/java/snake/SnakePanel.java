@@ -16,9 +16,9 @@ import java.util.Random;
 
 public class SnakePanel extends JPanel implements ActionListener {
     //game board size
-    static int S_Width = 1200;
-    static int S_Height = 600;
-    static int Game_unit_size = 50;
+    public static int S_Width = 1200;
+    public static int S_Height = 600;
+    public static int Game_unit_size = 50;
     
     Timer timer;
     Random random;
@@ -37,10 +37,10 @@ public class SnakePanel extends JPanel implements ActionListener {
     GameTimer gameTimer = new GameTimer();
     
     //intro variables
-    private String snakeColor;
-    private String backgroundColor;
-    private String appleColor;
-    private int DELAY;
+    Color snakeColor = Color.GREEN;
+    Color backgroundColor = Color.gray;
+    Color appleColor = Color.RED;
+    private int DELAY = 100;
     
     //returned variables
     long timeElapsed; 
@@ -49,7 +49,7 @@ public class SnakePanel extends JPanel implements ActionListener {
 
     SnakePanel() {
         this.setPreferredSize(new Dimension(S_Width, S_Height));
-        this.setBackground(Color.gray);
+        this.setBackground(backgroundColor);
         this.setFocusable(true);
         this.addKeyListener(new MyKey());
         random = new Random();
@@ -78,10 +78,10 @@ public class SnakePanel extends JPanel implements ActionListener {
             graphic.fillOval(foodX, foodY, Game_unit_size, Game_unit_size);
             for (int i = 0; i < bodylength; i++) {
                 if (i == 0) {
-                    graphic.setColor(Color.green);
+                    graphic.setColor(snakeColor);
                     graphic.fillRect(x_snake[i], y_snake[i], Game_unit_size, Game_unit_size);
                 } else {
-                    graphic.setColor(new Color(50, 180, 0));
+                    graphic.setColor(snakeColor);
                     graphic.fillRect(x_snake[i], y_snake[i], Game_unit_size, Game_unit_size);
                 }
             }
@@ -221,87 +221,4 @@ public class SnakePanel extends JPanel implements ActionListener {
         repaint();
     }
 
-    public int getBodylength() {
-        return bodylength;
-    }
-
-    public void setBodylength(int bodylength) {
-        this.bodylength = bodylength;
-    }
-
-    public int getFoodX() {
-        return foodX;
-    }
-
-    public void setFoodX(int foodX) {
-        this.foodX = foodX;
-    }
-
-    public int getFoodY() {
-        return foodY;
-    }
-
-    public void setFoodY(int foodY) {
-        this.foodY = foodY;
-    }
-
-    public boolean isGame_flag() {
-        return game_flag;
-    }
-
-    public void setGame_flag(boolean game_flag) {
-        this.game_flag = game_flag;
-    }
-
-    public int getFoodEAten() {
-        return foodEAten;
-    }
-
-    public void setFoodEAten(int foodEAten) {
-        this.foodEAten = foodEAten;
-    }
-
-    public String getSnakeColor() {
-        return snakeColor;
-    }
-
-    public void setSnakeColor(String snakeColor) {
-        this.snakeColor = snakeColor;
-    }
-
-    public String getBackgroundColor() {
-        return backgroundColor;
-    }
-
-    public void setBackgroundColor(String backgroundColor) {
-        this.backgroundColor = backgroundColor;
-    }
-
-    public String getAppleColor() {
-        return appleColor;
-    }
-
-    public void setAppleColor(String appleColor) {
-        this.appleColor = appleColor;
-    }
-
-    public int getDELAY() {
-        return DELAY;
-    }
-
-    public void setDELAY(int DELAY) {
-        this.DELAY = DELAY;
-    }
-
-    public long getTimeElapsed() {
-        return timeElapsed;
-    }
-
-    public void setTimeElapsed(long timeElapsed) {
-        this.timeElapsed = timeElapsed;
-    }
-
-    
-    
-    
 }
