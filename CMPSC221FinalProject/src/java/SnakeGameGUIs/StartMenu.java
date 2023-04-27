@@ -96,6 +96,11 @@ public class StartMenu extends java.awt.Frame {
                 LeaderboardButtonMouseExited(evt);
             }
         });
+        LeaderboardButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LeaderboardButtonActionPerformed(evt);
+            }
+        });
 
         ExitButton.setText("Exit");
         ExitButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -179,6 +184,7 @@ public class StartMenu extends java.awt.Frame {
 //Pulls up the game when the user clicks play
     private void PlayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlayButtonActionPerformed
        new SnakeFrame().setVisible(true);
+       
     }//GEN-LAST:event_PlayButtonActionPerformed
 
     private void SettingButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SettingButtonMouseEntered
@@ -209,6 +215,12 @@ public class StartMenu extends java.awt.Frame {
     private void SettingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SettingButtonActionPerformed
         new SettingMenu().setVisible(true);
     }//GEN-LAST:event_SettingButtonActionPerformed
+
+    private void LeaderboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LeaderboardButtonActionPerformed
+        
+       
+       
+    }//GEN-LAST:event_LeaderboardButtonActionPerformed
 
 
 
