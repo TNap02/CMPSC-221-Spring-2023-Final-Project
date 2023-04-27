@@ -34,7 +34,7 @@ public class SettingMenu extends javax.swing.JFrame {
         jTextField5 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         snakeColorCombo = new javax.swing.JComboBox<>();
-        SpeedBox = new javax.swing.JComboBox<>();
+        speedBox = new javax.swing.JComboBox<>();
         appleColorBox = new javax.swing.JComboBox<>();
         backgroundColorBox = new javax.swing.JComboBox<>();
 
@@ -89,10 +89,15 @@ public class SettingMenu extends javax.swing.JFrame {
         snakeColorCombo.setBackground(java.awt.Color.black);
         snakeColorCombo.setForeground(java.awt.Color.white);
         snakeColorCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Green", "Red", "Blue", "Yellow" }));
+        snakeColorCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                snakeColorComboActionPerformed(evt);
+            }
+        });
 
-        SpeedBox.setBackground(java.awt.Color.black);
-        SpeedBox.setForeground(java.awt.Color.white);
-        SpeedBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Slow", "Medium", "Fast" }));
+        speedBox.setBackground(java.awt.Color.black);
+        speedBox.setForeground(java.awt.Color.white);
+        speedBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Slow", "Medium", "Fast" }));
 
         appleColorBox.setBackground(java.awt.Color.black);
         appleColorBox.setForeground(java.awt.Color.white);
@@ -121,7 +126,7 @@ public class SettingMenu extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(snakeColorCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(SpeedBox, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(speedBox, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(appleColorBox, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(backgroundColorBox, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(141, Short.MAX_VALUE))
@@ -142,7 +147,7 @@ public class SettingMenu extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SpeedBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(speedBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -170,13 +175,24 @@ public class SettingMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       SettingMenu.this.dispose();
+        SettingInfo settings = new SettingInfo(snakeColorCombo.getItemAt(0),
+        speedBox.getItemAt(0), backgroundColorBox.getItemAt(0),appleColorBox.getItemAt(0));
+        System.out.println(backgroundColorBox.getSelectedItem());
+        
+        
+        //SettingMenu.this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void snakeColorComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_snakeColorComboActionPerformed
+        
+    }//GEN-LAST:event_snakeColorComboActionPerformed
 
     /**
      * @param args the command line arguments
@@ -215,7 +231,6 @@ public class SettingMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> SpeedBox;
     private javax.swing.JComboBox<String> appleColorBox;
     private javax.swing.JComboBox<String> backgroundColorBox;
     private javax.swing.JButton jButton1;
@@ -226,5 +241,6 @@ public class SettingMenu extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JComboBox<String> snakeColorCombo;
+    private javax.swing.JComboBox<String> speedBox;
     // End of variables declaration//GEN-END:variables
 }
