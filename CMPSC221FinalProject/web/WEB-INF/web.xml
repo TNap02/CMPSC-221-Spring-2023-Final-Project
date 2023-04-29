@@ -9,8 +9,3 @@
         <url-pattern>/SnakeServlet2</url-pattern>
     </servlet-mapping>
 </web-app>
-<dependency>
-    <groupId>com.google.cloud.sql</groupId>
-    <artifactId>mysql-socket-factory-connector-j-8</artifactId>
-    <version>1.11.1</version>
-</dependency>
