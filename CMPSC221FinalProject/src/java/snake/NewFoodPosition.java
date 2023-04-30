@@ -9,8 +9,10 @@ package snake;
  * @author napier
  */
 public class NewFoodPosition extends SnakePanel {
-    //SnakePanel test = new SnakePanel();
+    SnakePanel test = new SnakePanel();
+    
     //foodX = random.nextInt((int) (S_Width / Game_unit_size)) * Game_unit_size;
     //foodY = random.nextInt((int) (S_Height / Game_unit_size)) * Game_unit_size;
+    
     
 }

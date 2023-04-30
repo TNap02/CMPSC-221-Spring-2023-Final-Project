@@ -20,5 +20,9 @@ public class  SnakeFrame extends JFrame {
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         
+        if (SnakePanel.isGameOver == false){
+            this.setVisible(false);
+        }
+        
     }
 }

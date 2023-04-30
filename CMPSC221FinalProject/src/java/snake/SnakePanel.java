@@ -7,6 +7,7 @@
  * @version 1.0 4/25/23
  */
 package snake;
+import SnakeGameGUIs.SettingInfo;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,9 +17,9 @@ import java.util.Random;
 
 public class SnakePanel extends JPanel implements ActionListener {
     //game board size
-    public static int S_Width = 1200;
-    public static int S_Height = 600;
-    public static int Game_unit_size = 50;
+    final static int S_Width = 1200;
+    final static int S_Height = 600;
+    final static int Game_unit_size = 50;
     
     Timer timer;
     Random random;
@@ -37,14 +38,17 @@ public class SnakePanel extends JPanel implements ActionListener {
     GameTimer gameTimer = new GameTimer();
     
     //intro variables
+    
+    
     Color snakeColor = Color.GREEN;
     Color backgroundColor = Color.gray;
     Color appleColor = Color.RED;
-    private int DELAY = 100;
+    int DELAY = 100;
     
     //returned variables
     long timeElapsed; 
-    int foodEAten;
+    int foodEaten;
+    static boolean isGameOver = true;
 
 
     SnakePanel() {
@@ -59,6 +63,7 @@ public class SnakePanel extends JPanel implements ActionListener {
     public void Game_start() {
         newfoodPosition();
         game_flag = true;
+        isGameOver = false;
         timer = new Timer(DELAY, this);
         timer.start();
         gameTimer.startTimer();
@@ -74,7 +79,7 @@ public class SnakePanel extends JPanel implements ActionListener {
     //snake color, background color, apple color
     public void draw(Graphics graphic) {
         if (game_flag) {
-            graphic.setColor(Color.yellow);
+            graphic.setColor(appleColor);
             graphic.fillOval(foodX, foodY, Game_unit_size, Game_unit_size);
             for (int i = 0; i < bodylength; i++) {
                 if (i == 0) {
@@ -88,7 +93,7 @@ public class SnakePanel extends JPanel implements ActionListener {
             graphic.setColor(Color.blue);
             graphic.setFont(new Font("Ink Free", Font.BOLD, 40));
             FontMetrics font_me = getFontMetrics(graphic.getFont());
-            graphic.drawString("Score:" + foodEAten, (S_Width - font_me.stringWidth("Score:" + foodEAten)) / 2, graphic.getFont().getSize());
+            graphic.drawString("Score:" + foodEaten, (S_Width - font_me.stringWidth("Score:" + foodEaten)) / 2, graphic.getFont().getSize());
         } else {
             gameOver(graphic);
         }
@@ -123,7 +128,7 @@ public class SnakePanel extends JPanel implements ActionListener {
     public void food_EatenOrNot() {// for checking the food has been eaten by snake or not
         if ((x_snake[0] == foodX) && (y_snake[0] == foodY)) {
             bodylength++;
-            foodEAten++;
+            foodEaten++;
             newfoodPosition();
         }
     }
@@ -153,23 +158,31 @@ public class SnakePanel extends JPanel implements ActionListener {
     }
 
     public void gameOver(Graphics graphic) {// When ever game is over this function will be called.
-        graphic.setColor(Color.red);
-        graphic.setFont(new Font("Ink Free", Font.BOLD, 40));
-        FontMetrics font_me = getFontMetrics(graphic.getFont());
-        graphic.drawString("Score:" + foodEAten, (S_Width - font_me.stringWidth("Score:" + foodEAten)) / 2,
-                graphic.getFont().getSize());
-        graphic.setColor(Color.red);
-        graphic.setFont(new Font("Ink Free", Font.BOLD, 75));
-        FontMetrics font_me2 = getFontMetrics(graphic.getFont());
-        graphic.drawString("Game Over", (S_Width - font_me2.stringWidth("Game Over")) / 2,
-                S_Height / 2);
-        graphic.setColor(Color.red);
-        graphic.setFont(new Font("Ink Free", Font.BOLD, 40));
-        FontMetrics font_me3 = getFontMetrics(graphic.getFont());
-        graphic.drawString("Press R to Replay", (S_Width - font_me3.stringWidth("Press R to Replay")) / 2, S_Height / 2 - 150);
-        gameTimer.stopTimer();
-        //test
-        System.out.println(gameTimer.getTimeElapsed());
+        //test code
+//        graphic.setColor(Color.red);
+//        graphic.setFont(new Font("Ink Free", Font.BOLD, 40));
+//        FontMetrics font_me = getFontMetrics(graphic.getFont());
+//        graphic.drawString("Score:" + foodEAten, (S_Width - font_me.stringWidth("Score:" + foodEAten)) / 2,
+//                graphic.getFont().getSize());
+//        graphic.setColor(Color.red);
+//        graphic.setFont(new Font("Ink Free", Font.BOLD, 75));
+//        FontMetrics font_me2 = getFontMetrics(graphic.getFont());
+//        graphic.drawString("Game Over", (S_Width - font_me2.stringWidth("Game Over")) / 2,
+//                S_Height / 2);
+//        graphic.setColor(Color.red);
+//        graphic.setFont(new Font("Ink Free", Font.BOLD, 40));
+//        FontMetrics font_me3 = getFontMetrics(graphic.getFont());
+//        graphic.drawString("Press R to Replay", (S_Width - font_me3.stringWidth("Press R to Replay")) / 2, S_Height / 2 - 150);
+//        gameTimer.stopTimer();
+//        //test
+//        System.out.println(gameTimer.getTimeElapsed());
+
+        isGameOver = false;
+        
+        
+
+
+
     }
 
     public class MyKey extends KeyAdapter {
@@ -199,7 +212,7 @@ public class SnakePanel extends JPanel implements ActionListener {
                     break;
                 case KeyEvent.VK_R:
                     if (!game_flag) {
-                        foodEAten = 0;
+                        foodEaten = 0;
                         bodylength = 2;
                         dir = 'R';
                         Arrays.fill(x_snake, 0);
@@ -222,3 +235,6 @@ public class SnakePanel extends JPanel implements ActionListener {
     }
 
 }
+
+
+
