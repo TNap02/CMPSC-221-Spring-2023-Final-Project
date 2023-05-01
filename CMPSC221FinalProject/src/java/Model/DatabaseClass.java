@@ -78,7 +78,7 @@ public class DatabaseClass {
 
             Statement stmt = con.createStatement();
             
-            String stmtString = "SELECT USERNAME, SCORE, TIME * FROM TEAM2.SNAKETABLE ORDER BY SCORE DESC LIMIT 10";
+            String stmtString = "SELECT USERNAME, SCORE, TIME FROM TEAM2.SNAKETABLE ORDER BY SCORE DESC";
             
             ResultSet rs = stmt.executeQuery(stmtString);
             
