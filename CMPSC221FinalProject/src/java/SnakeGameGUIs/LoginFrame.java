@@ -8,6 +8,8 @@
  */
 package SnakeGameGUIs;
 
+import Model.LoginCreateAccount;
+import Model.DatabaseClass;
 
 public class LoginFrame extends javax.swing.JFrame {
 
@@ -39,7 +41,7 @@ public class LoginFrame extends javax.swing.JFrame {
         usernameTextBox = new javax.swing.JTextField();
         loginButton = new javax.swing.JButton();
         createAccountButton = new javax.swing.JButton();
-        invalidCredentials = new javax.swing.JTextField();
+        SuccessLogin = new javax.swing.JTextField();
         passwordTextBox = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -97,10 +99,10 @@ public class LoginFrame extends javax.swing.JFrame {
             }
         });
 
-        invalidCredentials.setEditable(false);
-        invalidCredentials.setBackground(java.awt.Color.black);
-        invalidCredentials.setForeground(java.awt.Color.red);
-        invalidCredentials.setBorder(null);
+        SuccessLogin.setEditable(false);
+        SuccessLogin.setBackground(java.awt.Color.black);
+        SuccessLogin.setForeground(java.awt.Color.red);
+        SuccessLogin.setBorder(null);
 
         passwordTextBox.setBackground(java.awt.Color.black);
         passwordTextBox.setForeground(new java.awt.Color(102, 255, 102));
@@ -112,7 +114,7 @@ public class LoginFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(32, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(invalidCredentials, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SuccessLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,7 +162,7 @@ public class LoginFrame extends javax.swing.JFrame {
                     .addComponent(createAccountButton)
                     .addComponent(passwordTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(invalidCredentials, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(SuccessLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
@@ -182,15 +184,25 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         
-        new StartMenu().setVisible(true);
+        DatabaseClass DB = new DatabaseClass();
+        LoginCreateAccount LCA = new LoginCreateAccount();
         
         LoginInfo user = new LoginInfo(usernameTextBox.getText(), passwordTextBox.getText());
+        
+        if (DB.pullLogin(LoginInfo.username, LoginInfo.password) == true) {
+            new StartMenu().setVisible(true);
+        }
+        
+        SuccessLogin.setText(LCA.loginSuccessful());
+        
         
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void createAccountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAccountButtonActionPerformed
-       
+        DatabaseClass DB = new DatabaseClass();
+        LoginCreateAccount LCA = new LoginCreateAccount();
         new StartMenu().setVisible(true);
+        
         LoginInfo user = new LoginInfo(usernameTextBox.getText(), passwordTextBox.getText());
     }//GEN-LAST:event_createAccountButtonActionPerformed
 
@@ -210,8 +222,8 @@ public class LoginFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField SuccessLogin;
     private javax.swing.JButton createAccountButton;
-    private javax.swing.JTextField invalidCredentials;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
