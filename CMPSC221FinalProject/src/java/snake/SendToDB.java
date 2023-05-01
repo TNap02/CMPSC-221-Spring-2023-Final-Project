@@ -6,6 +6,9 @@ package snake;
 
 public class SendToDB {
     
-    //public SendToDB(String )
+    //username password score time
+    public SendToDB(String username, String password, int score, int time){
+        
+    }
     
 }

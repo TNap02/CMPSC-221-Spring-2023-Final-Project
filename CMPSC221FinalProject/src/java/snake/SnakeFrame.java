@@ -14,7 +14,7 @@ public class  SnakeFrame extends JFrame {
     public SnakeFrame(){
         this.add(new SnakePanel());
         this.setTitle("Snake");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         this.setResizable(false);
         this.pack();
         this.setVisible(true);

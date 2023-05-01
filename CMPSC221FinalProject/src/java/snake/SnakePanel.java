@@ -10,6 +10,7 @@ package snake;
 
 import SnakeGameGUIs.SettingInfo;
 import SnakeGameGUIs.LoginInfo;
+import Model.DatabaseClass;
 
 import javax.swing.*;
 import java.awt.*;
@@ -48,29 +49,10 @@ public class SnakePanel extends JPanel implements ActionListener {
     int gameSpeed = 100;
 
     //returned variables
-    long timeElapsed;
+    int timeElapsed;
     int foodEaten;
     static boolean isGameOver = false;
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
     SnakePanel() {
         String strSnakeColor = SettingInfo.snakeColor;
         String strBackgroundColor = SettingInfo.backgroundColor;
@@ -208,12 +190,15 @@ public class SnakePanel extends JPanel implements ActionListener {
         graphic.drawString("Close Window to Save Score", (S_Width - font_me3.stringWidth("Close Window to Save Score")) / 2, S_Height / 2 - 150);
 
         gameTimer.stopTimer();
-        timeElapsed = gameTimer.getTimeElapsed();
+        timeElapsed = (int) gameTimer.getTimeElapsed();
         //test
-        System.out.println(gameTimer.getTimeElapsed());
 
+        String username = LoginInfo.getUsername();
+        String password = LoginInfo.getPassword();
+        DatabaseClass test = new DatabaseClass();
+        test.pushInfo(username, password, foodEaten, timeElapsed);
         isGameOver = true;
-
+        
     }
 
     public class MyKey extends KeyAdapter {

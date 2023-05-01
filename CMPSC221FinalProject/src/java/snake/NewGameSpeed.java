@@ -17,7 +17,7 @@ public class NewGameSpeed {
 
             //green red blue yellow, slow medium fast, black gray white
             case "slow":
-                newGameSpeed = 50;
+                newGameSpeed = 150;
                 break;
             case "medium":
                 newGameSpeed = 100;
