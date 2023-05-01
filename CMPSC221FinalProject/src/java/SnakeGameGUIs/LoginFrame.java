@@ -201,9 +201,15 @@ public class LoginFrame extends javax.swing.JFrame {
     private void createAccountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAccountButtonActionPerformed
         DatabaseClass DB = new DatabaseClass();
         LoginCreateAccount LCA = new LoginCreateAccount();
-        new StartMenu().setVisible(true);
-        
         LoginInfo user = new LoginInfo(usernameTextBox.getText(), passwordTextBox.getText());
+
+        if (DB.pullLogin(LoginInfo.username, LoginInfo.password) == true){
+        SuccessLogin.setText(LCA.createAccountSuccess());
+        }
+        
+        else {
+        new StartMenu().setVisible(true);
+        }
     }//GEN-LAST:event_createAccountButtonActionPerformed
 
     
