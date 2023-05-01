@@ -11,16 +11,22 @@ package SnakeGameGUIs;
 
 public class SettingInfo {
     
-    private String snakeColor;
-    private String snakeSpeed;
-    private String backgroundColor;
-    private String appleColor;
+    public static String snakeColor;
+    public static String snakeSpeed;
+    public static String backgroundColor;
+    public static String appleColor;
 
     public SettingInfo(String snakeColor, String snakeSpeed, String backgroundColor, String appleColor) {
         this.snakeColor = snakeColor;
         this.snakeSpeed = snakeSpeed;
         this.backgroundColor = backgroundColor;
         this.appleColor = appleColor;
+    }
+    public SettingInfo() {
+        snakeColor = "";
+        snakeSpeed = "";
+        backgroundColor = "";
+        appleColor = "";
     }
 
     public String getSnakeColor() {

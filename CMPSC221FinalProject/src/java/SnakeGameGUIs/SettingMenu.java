@@ -1,6 +1,6 @@
 /**
 * CMPSC 221 Program #5
- * SettingInfo.java
+ * SettingMenu.java
  * GUI for the setting menu
  * @author Logan Simbeck
  * @version 1.0 4/27/2023
@@ -10,12 +10,14 @@ package SnakeGameGUIs;
 
 public class SettingMenu extends javax.swing.JFrame {
 
+    
     /**
      * Creates new form SettingFrame
      */
     public SettingMenu() {
         initComponents();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -182,12 +184,13 @@ public class SettingMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        SettingInfo settings = new SettingInfo(snakeColorCombo.getItemAt(0),
-        speedBox.getItemAt(0), backgroundColorBox.getItemAt(0),appleColorBox.getItemAt(0));
-        System.out.println(backgroundColorBox.getSelectedItem());
+        SettingInfo settings = new SettingInfo(snakeColorCombo.getSelectedItem().toString(),
+        speedBox.getSelectedItem().toString(), 
+                backgroundColorBox.getSelectedItem().toString(),
+                appleColorBox.getSelectedItem().toString());
         
         
-        //SettingMenu.this.dispose();
+        SettingMenu.this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void snakeColorComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_snakeColorComboActionPerformed
@@ -197,38 +200,7 @@ public class SettingMenu extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SettingMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SettingMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SettingMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SettingMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new SettingMenu().setVisible(true);
-            }
-        });
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> appleColorBox;
