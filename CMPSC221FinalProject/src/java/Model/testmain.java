@@ -29,6 +29,12 @@ public class testmain {
         System.out.println(newTest.pullLogin(user,pass));
         newTest.topTenLeaderboard();
         
+       int score = 23;
+       int time = 24;
+               
+        
+        newTest.pushInfo(user,pass,score, time);
+        
     }
     
 }

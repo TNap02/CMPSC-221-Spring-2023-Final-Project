@@ -105,4 +105,33 @@ public class DatabaseClass {
         }
         
     }
+    
+    public void pushInfo(String useruser, String passpass, int score, int time){
+        try{
+            Class.forName("org.apache.derby.jdbc.ClientDriver");
+        }
+        
+        catch (Exception e){
+            System.exit(-1);
+        }
+        
+        try{
+            Connection con =
+                    DriverManager.getConnection(jdbcUrl,username ,password);
+            
+            Statement stmt = con.createStatement();
+            
+            String insert = "INSERT INTO TEAM2.SNAKETABLE (USERNAME, PASSWORD, SCORE, TIME) VALUES ('" + useruser + "', '" + passpass + "', " + score + ", " + time +")";
+            
+            stmt.executeUpdate(insert);
+            
+            stmt.close();
+            
+            con.close();
+        }
+        
+        catch(Exception e){
+            System.out.println(e);
+        }
+    }
 }
