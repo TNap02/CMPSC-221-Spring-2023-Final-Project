@@ -189,6 +189,7 @@ public class LoginFrame extends javax.swing.JFrame {
         
         LoginInfo user = new LoginInfo(usernameTextBox.getText(), passwordTextBox.getText());
         
+        //checks to see if the user succesfully logs in 
         if (DB.pullLogin(LoginInfo.username, LoginInfo.password) == true) {
             new StartMenu().setVisible(true);
         }
@@ -203,6 +204,7 @@ public class LoginFrame extends javax.swing.JFrame {
         LoginCreateAccount LCA = new LoginCreateAccount();
         LoginInfo user = new LoginInfo(usernameTextBox.getText(), passwordTextBox.getText());
 
+        //Checks to see if the user successfully creates an account
         if (DB.pullLogin(LoginInfo.username, LoginInfo.password) == true){
         SuccessLogin.setText(LCA.createAccountSuccess());
         }

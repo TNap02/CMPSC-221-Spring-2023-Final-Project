@@ -184,12 +184,14 @@ public class SettingMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        //sets all the setting variables 
         SettingInfo settings = new SettingInfo(snakeColorCombo.getSelectedItem().toString(),
         speedBox.getSelectedItem().toString(), 
                 backgroundColorBox.getSelectedItem().toString(),
                 appleColorBox.getSelectedItem().toString());
         
-        
+        //closes out the settings page
         SettingMenu.this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
