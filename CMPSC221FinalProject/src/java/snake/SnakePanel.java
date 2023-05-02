@@ -20,20 +20,25 @@ import java.util.Random;
 
 public class SnakePanel extends JPanel implements ActionListener {
 
+    //variables
     //game board size
     final static int S_Width = 1200;
     final static int S_Height = 600;
     final static int Game_unit_size = 50;
 
+    //game variables
     Timer timer;
     Random random;
     int bodylength = 2;
     int foodX;
     int foodY;
 
+    //check if game is over
     boolean game_flag = false;
+    //direction
     char dir = 'R';
-    //static final int DELAY = 50;
+
+    //snake size
     static final int G_Size = (S_Width * S_Height) / (Game_unit_size * Game_unit_size);
     final int x_snake[] = new int[G_Size];
     final int y_snake[] = new int[G_Size];
@@ -45,45 +50,61 @@ public class SnakePanel extends JPanel implements ActionListener {
     Color snakeColor = Color.GREEN;
     Color backgroundColor = Color.gray;
     Color appleColor = Color.RED;
-
     int gameSpeed = 100;
 
     //returned variables
     int timeElapsed;
     int foodEaten;
-    static boolean isGameOver = false;
-    
+
+    /**
+     * Constructor
+     */
     SnakePanel() {
+        //grabs strings from Setinginfo
         String strSnakeColor = SettingInfo.snakeColor;
         String strBackgroundColor = SettingInfo.backgroundColor;
         String strAppleColor = SettingInfo.appleColor;
         String strGameSpeed = SettingInfo.snakeSpeed;
 
+        //opens NewColor and NewGameSpeed classes
         NewColor newCol = new NewColor();
         NewGameSpeed newGS = new NewGameSpeed();
 
+        //sets the color of the snake, game board and apple
         setSnakeColor(newCol.getColor(strSnakeColor));
         setBackgroundColor(newCol.getColor(strBackgroundColor));
         setAppleColor(newCol.getColor(strAppleColor));
+        //sets the game speed
         setGameSpeed(newGS.getGameSpeed(strGameSpeed));
 
+        //sets size of panel
         this.setPreferredSize(new Dimension(S_Width, S_Height));
         this.setBackground(backgroundColor);
         this.setFocusable(true);
         this.addKeyListener(new MyKey());
         random = new Random();
+        //starts game
         Game_start();
     }
 
+    /**
+     * Starts Game
+     */
     public void Game_start() {
+        //sets initial food position
         newfoodPosition();
         game_flag = true;
-        isGameOver = false;
         timer = new Timer(gameSpeed, this);
+        //starts timer
         timer.start();
         gameTimer.startTimer();
     }
 
+    /**
+     * Paints game components
+     *
+     * @param graphic
+     */
     public void paintComponent(Graphics graphic) {
         super.paintComponent(graphic);
         draw(graphic);
@@ -91,6 +112,11 @@ public class SnakePanel extends JPanel implements ActionListener {
 
     //Snake speed
     //snake color, background color, apple color
+    /**
+     * paints board as long as game is not over
+     *
+     * @param graphic
+     */
     public void draw(Graphics graphic) {
         if (game_flag) {
             graphic.setColor(appleColor);
@@ -104,6 +130,7 @@ public class SnakePanel extends JPanel implements ActionListener {
                     graphic.fillRect(x_snake[i], y_snake[i], Game_unit_size, Game_unit_size);
                 }
             }
+            //sets score marker on top
             graphic.setColor(Color.blue);
             graphic.setFont(new Font("Ink Free", Font.BOLD, 40));
             FontMetrics font_me = getFontMetrics(graphic.getFont());
@@ -113,6 +140,9 @@ public class SnakePanel extends JPanel implements ActionListener {
         }
     }
 
+    /**
+     * moves snake
+     */
     public void move() {
         for (int i = bodylength; i > 0; i--) {
             x_snake[i] = x_snake[i - 1];
@@ -134,11 +164,17 @@ public class SnakePanel extends JPanel implements ActionListener {
         }
     }
 
+    /**
+     * Gets a new food position
+     */
     public void newfoodPosition() {// for displaying food at a random position on the screen
         foodX = random.nextInt((int) (S_Width / Game_unit_size)) * Game_unit_size;
         foodY = random.nextInt((int) (S_Height / Game_unit_size)) * Game_unit_size;
     }
 
+    /**
+     * checks if the head of the snake is on the same spot as the food
+     */
     public void food_EatenOrNot() {// for checking the food has been eaten by snake or not
         if ((x_snake[0] == foodX) && (y_snake[0] == foodY)) {
             bodylength++;
@@ -147,8 +183,10 @@ public class SnakePanel extends JPanel implements ActionListener {
         }
     }
 
+    /**
+     * checks if snake hits itself or the wall
+     */
     public void checkHit() {
-// for checking if by mistake snake bite itself and if it collides with walls
         for (int i = bodylength; i > 0; i--) {
             if ((x_snake[0] == x_snake[i]) && (y_snake[0] == y_snake[i])) {
                 game_flag = false;
@@ -171,9 +209,13 @@ public class SnakePanel extends JPanel implements ActionListener {
         }
     }
 
-    public void gameOver(Graphics graphic) {// When ever game is over this function will be called.
+    /**
+     * Handles the game over screen
+     *
+     * @param graphic
+     */
+    public void gameOver(Graphics graphic) {
 
-        //test code
         graphic.setColor(Color.red);
         graphic.setFont(new Font("Ink Free", Font.BOLD, 40));
         FontMetrics font_me = getFontMetrics(graphic.getFont());
@@ -189,18 +231,21 @@ public class SnakePanel extends JPanel implements ActionListener {
         FontMetrics font_me3 = getFontMetrics(graphic.getFont());
         graphic.drawString("Close Window to Save Score", (S_Width - font_me3.stringWidth("Close Window to Save Score")) / 2, S_Height / 2 - 150);
 
+        //stops timer
         gameTimer.stopTimer();
         timeElapsed = (int) gameTimer.getTimeElapsed();
-        //test
 
+        //gets login info
         String username = LoginInfo.getUsername();
         String password = LoginInfo.getPassword();
         DatabaseClass test = new DatabaseClass();
+        //pushes to database
         test.pushInfo(username, password, foodEaten, timeElapsed);
-        isGameOver = true;
-        
     }
 
+    /**
+     * Checks what key the user presses
+     */
     public class MyKey extends KeyAdapter {
 
         @Override
@@ -240,6 +285,11 @@ public class SnakePanel extends JPanel implements ActionListener {
         }
     }
 
+    /**
+     * repaints on action preformed
+     *
+     * @param arg0
+     */
     @Override
     public void actionPerformed(ActionEvent arg0) {
         if (game_flag) {
@@ -250,18 +300,38 @@ public class SnakePanel extends JPanel implements ActionListener {
         repaint();
     }
 
+    /**
+     * sets the color of the snake
+     *
+     * @param snakeColor
+     */
     public void setSnakeColor(Color snakeColor) {
         this.snakeColor = snakeColor;
     }
 
+    /**
+     * sets the color of the background
+     *
+     * @param backgroundColor
+     */
     public void setBackgroundColor(Color backgroundColor) {
         this.backgroundColor = backgroundColor;
     }
 
+    /**
+     * sets the color of the apple
+     *
+     * @param appleColor
+     */
     public void setAppleColor(Color appleColor) {
         this.appleColor = appleColor;
     }
 
+    /**
+     * sets the game speed
+     *
+     * @param gameSpeed
+     */
     public void setGameSpeed(int gameSpeed) {
         this.gameSpeed = gameSpeed;
     }

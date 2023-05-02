@@ -1,21 +1,26 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+/**
+ * CMPSC 221 Final Project
+ * NewGameSpeed.java
+ * Purpose: convert the string speed into a int
+ *
+ * @author Tristan Napier
+ * @version 1.0 5/1/23
  */
 package snake;
 
-/**
- *
- * @author napier
- */
 public class NewGameSpeed {
 
+    //variable
     int newGameSpeed;
 
+    /**
+     * convert the string speed into a int
+     *
+     * @param str game speed in fast, medium or slow
+     * @return int game speed
+     */
     public int getGameSpeed(String str) {
         switch (str.toLowerCase()) {
-
-            //green red blue yellow, slow medium fast, black gray white
             case "slow":
                 newGameSpeed = 150;
                 break;
@@ -25,7 +30,6 @@ public class NewGameSpeed {
             case "fast":
                 newGameSpeed = 50;
                 break;
-
         }
         return newGameSpeed;
     }

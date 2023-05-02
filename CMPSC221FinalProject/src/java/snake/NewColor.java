@@ -11,36 +11,41 @@ package snake;
 import java.awt.Color;
 
 public class NewColor {
-    
+
+    //variable
     Color newColor;
-    
+
+    /**
+     * Turn the color string into a color object
+     *
+     * @param col color in string
+     * @return color in Color object
+     */
     public Color getColor(String col) {
-    switch (col.toLowerCase()) {
-        
-        //green red blue yellow, slow medium fast, black gray white
-    case "black":
-        newColor = Color.BLACK;
-        break;
-    case "blue":
-        newColor = Color.BLUE;
-        break;
-    case "gray":
-        newColor = Color.GRAY;
-        break;
-    case "green":
-        newColor = Color.GREEN;
-        break;
-    case "yellow":
-        newColor = Color.YELLOW;
-        break;
-    case "red":
-        newColor = Color.RED;
-        break;
-    case "white":
-        newColor = Color.WHITE;
-        break;
+        switch (col.toLowerCase()) {
+            case "black":
+                newColor = Color.BLACK;
+                break;
+            case "blue":
+                newColor = Color.BLUE;
+                break;
+            case "gray":
+                newColor = Color.GRAY;
+                break;
+            case "green":
+                newColor = Color.GREEN;
+                break;
+            case "yellow":
+                newColor = Color.YELLOW;
+                break;
+            case "red":
+                newColor = Color.RED;
+                break;
+            case "white":
+                newColor = Color.WHITE;
+                break;
         }
-    return newColor;
+        return newColor;
     }
-    
+
 }
