@@ -16,7 +16,10 @@ public class LoginCreateAccount {
     DatabaseClass DB = new DatabaseClass();
     
     
-    
+    /**
+     * 
+     * @return weather the login was successful or not
+     */
    public String loginSuccessful() {
        if (DB.pullLogin(LoginInfo.username, LoginInfo.password) == true) {
            return "Login Successful";
@@ -26,6 +29,11 @@ public class LoginCreateAccount {
     
         }
     }
+   
+   /**
+    * 
+    * @return weather creating the account was successful or not
+    */
    public String createAccountSuccess() {
         if (DB.pullLogin(LoginInfo.username, LoginInfo.password) == true) {
            return "Account already Created";
