@@ -217,7 +217,12 @@ public class StartMenu extends java.awt.Frame {
     }//GEN-LAST:event_SettingButtonActionPerformed
 
     private void LeaderboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LeaderboardButtonActionPerformed
-        
+try {
+        String url = "http://localhost:32308/CMPSC221FinalProject/GameOver.jsp";
+        java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
+    } catch (java.io.IOException e) {
+        System.out.println(e.getMessage());
+    }        
        
        
     }//GEN-LAST:event_LeaderboardButtonActionPerformed
