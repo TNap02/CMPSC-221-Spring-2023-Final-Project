@@ -57,16 +57,16 @@ public class SnakeServlet2 extends HttpServlet {
         
        request.setAttribute("userScore", userScore);
        request.setAttribute("userTime", userTime);
-       request.setAttribute(score1,score1);
-       request.setAttribute(score2,score2);
-       request.setAttribute(score3,score3);
-       request.setAttribute(score4,score4);
-       request.setAttribute(score5,score5);
-       request.setAttribute(score6,score6);
-       request.setAttribute(score7,score7);
-       request.setAttribute(score8,score8);
-       request.setAttribute(score9,score9);
-       request.setAttribute(score10,score10);
+       request.setAttribute("score1",score1);
+       request.setAttribute("score2",score2);
+       request.setAttribute("score3",score3);
+       request.setAttribute("score4",score4);
+       request.setAttribute("score5",score5);
+       request.setAttribute("score6",score6);
+       request.setAttribute("score7",score7);
+       request.setAttribute("score8",score8);
+       request.setAttribute("score9",score9);
+       request.setAttribute("score10",score10);
         
         
         

@@ -26,6 +26,8 @@
           String score9 = (String) request.getAttribute("score9");
           String score10 = (String)request.getAttribute("score10");
           %>
+          <p style="color:azure;"> USERNAME:  SCORE:  TIME PLAYED(SECONDS): <p>
+              <br>
           <p style="color:azure;"> 1: <%= score1 %> <p>
           <p style="color:azure;"> 2: <%= score2 %> <p>
           <p style="color:azure;"> 3: <%= score3 %> <p>
@@ -36,5 +38,13 @@
           <p style="color:azure;"> 8: <%= score8 %> <p>  
           <p style="color:azure;"> 9: <%= score9 %> <p>
           <p style="color:azure;"> 10: <%= score10 %> <p>
+              <br>
+              
+          <%
+          String userScore = (String) request.getAttribute("userScore");
+          String userTime = (String) request.getAttribute("userTime");
+          %>
+          <p style="color:azure;"> Your Score: <%= userScore %> <p>
+          <p style="color:azure;"> Your Time: <%= userTime %> <p>
     </body>
 </html>

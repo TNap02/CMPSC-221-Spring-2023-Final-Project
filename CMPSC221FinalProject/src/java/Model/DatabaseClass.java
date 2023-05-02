@@ -64,6 +64,7 @@ public class DatabaseClass {
          
     }
     
+    //Pulls out the top 10 scores and the accompanying playtime and username
     public ArrayList topTenLeaderboard(){
         try{
             Class.forName("org.apache.derby.jdbc.ClientDriver");
@@ -115,6 +116,7 @@ public class DatabaseClass {
       
     }
     
+    //Pulls the most recent data inserted into the leaderboard
     public String recentScoreAndTime(){
         try{
             Class.forName("org.apache.derby.jdbc.ClientDriver");
@@ -161,6 +163,7 @@ public class DatabaseClass {
         
    }    
     
+    //Pushes the username, password, score, and playtime of the user upon the end of a game
     public void pushInfo(String useruser, String passpass, int score, int time){
         try{
             Class.forName("org.apache.derby.jdbc.ClientDriver");

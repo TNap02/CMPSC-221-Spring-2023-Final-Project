@@ -1,23 +1,22 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+/**
+ * CMPSC 221 Final Project Team 2 2023
+ * ScoreMethods.java
+ * Purpose: Communicate with database class to set the score and time for the logged in user
+ * 
+ * @author Codey Solomon
+ * @verson 1.0 4/28/23
  */
 package Model;
 
-import java.util.ArrayList;
-
-
-/**
- *
- * @author codeysolomon
- */
 public class ScoreMethods {
-    
+    //Creates a database class object
     DatabaseClass dataBot = new DatabaseClass();
-    
+   
+    //Establishes variables
     public String score = "";
     public String time = "";
     
+    //Pulls and sets the time and score for the logged in user
     public void setScoreAndTime(){
         
         String returnVal = dataBot.recentScoreAndTime();
@@ -28,10 +27,12 @@ public class ScoreMethods {
          
     }
 
+    //Returns the users score
     public String getScore() {
         return score;
     }
 
+    //Returns the time score
     public String getTime() {
         return time;
     }
